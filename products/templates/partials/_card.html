@@ -1,0 +1,24 @@
+{% load static %}
+
+
+<div class="card" >
+    {% if product.image %}
+      <img src="{{product.image.url}}" class="card-img-top" alt="..." height="300px">
+
+    {% else %}
+      <img src="{static 'default.png'}" alt="">
+    {% endif %}
+
+  
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">{{product.content}}</p>
+    <p class="card-text">{{product.category.name}}</p>
+    {% for sub in product.sub_category.all %}
+    <small>{{sub.name}}</small>
+    {% endfor %}
+    
+    <p>{{product.price}}TL</p>
+    <a href="{%url 'detail-page' product.id%}" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
